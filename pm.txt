@@ -1,0 +1,49 @@
+PM
+Prograssive Meshes File Format
+
+
+
+FILE STRUCTURE
+--------------
+
+
+An SMF file is a text file consisting of a series of lines.  Each line
+is interpreted independently and in sequence.  A line may have one of
+the following three forms:
+
+    (1) Entirely whitespace
+
+            These lines are completely ignored.
+
+    (2) A comment line, beginning with the character '#'
+
+            These lines are also ignored.
+
+    (3) A command line of the form: <op> <arg>*
+
+            The first token on the line is interpreted as a command
+            name.  The remaining tokens are arguments to the command;
+            their interpretation is command-dependent.  Tokens are
+            whitespace-separated character sequences.
+
+
+Core Operators
+
+
+    v <x> <y> <z>
+
+        Defines a new vertex with coordinates [<x> <y> <z>].  Within a
+        given scope, vertices are implicitly numbered starting from 1
+        (NOT 0).
+
+    f <v1> <v2> <v3>
+
+        Defines a new triangular face whose corners are the vertices
+        identified by the three numbers <v1> <v2> <v3>.  The vertices
+        are generally assumed to be listed in counter-clockwise order.
+
+    vsplit <number> <x1> <y1> <z1> <x2> <y2> <z2> <x3> <y3> <z3>
+
+        Defines a new contraction identified by the three vertices 
+        <v1> <v2> <v3>. where <v1> and <v2> is replaced with <v3>,
+       and <number> is the sequence order of contraction.
